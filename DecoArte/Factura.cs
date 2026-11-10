@@ -267,6 +267,24 @@ namespace DecoArte
             {
                 MessageBox.Show("Error al guardar la factura: " + ex.Message, "Error SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        }
+        // Método para bloquear números (Para Nombres, Empresas, Roles)
+        private void ValidarSoloLetras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; // Bloquea la tecla si no es letra, control (borrar) o espacio
+            }
+        }
+
+        // Método para bloquear letras (Para Teléfonos)
+        private void ValidarSoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Bloquea la tecla si no es un número o control (borrar)
+            }
         }
     }
 }

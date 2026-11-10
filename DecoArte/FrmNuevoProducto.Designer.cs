@@ -28,30 +28,33 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges1 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges2 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges11 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges12 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
-            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges3 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges4 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges5 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges6 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges7 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges8 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges9 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
+            Guna.UI2.WinForms.Suite.CustomizableEdges customizableEdges10 = new Guna.UI2.WinForms.Suite.CustomizableEdges();
             guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
             label1 = new Label();
             guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            txtCodigo = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
-            guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
-            cmbCategoria = new Guna.UI2.WinForms.Guna2ComboBox();
             btnGuardar = new Guna.UI2.WinForms.Guna2Button();
+            cmbCategoria = new Guna.UI2.WinForms.Guna2ComboBox();
+            guna2HtmlLabel3 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            txtNombre = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2HtmlLabel2 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            txtCodigo = new Guna.UI2.WinForms.Guna2TextBox();
+            guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
+            errorProvider1 = new ErrorProvider(components);
             guna2Panel1.SuspendLayout();
             guna2Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).BeginInit();
             SuspendLayout();
             // 
             // guna2Panel1
@@ -70,10 +73,10 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Comic Sans MS", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Georgia", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(315, 28);
             label1.Name = "label1";
-            label1.Size = new Size(269, 35);
+            label1.Size = new Size(296, 29);
             label1.TabIndex = 0;
             label1.Text = "Añade nuevo Producto";
             // 
@@ -96,45 +99,53 @@
             guna2Panel2.Size = new Size(548, 369);
             guna2Panel2.TabIndex = 1;
             // 
-            // guna2HtmlLabel1
+            // btnGuardar
             // 
-            guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel1.Location = new Point(15, 46);
-            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(212, 18);
-            guna2HtmlLabel1.TabIndex = 0;
-            guna2HtmlLabel1.Text = "Ingresa El Id Del Producto/Servicio";
+            btnGuardar.BorderRadius = 20;
+            btnGuardar.CustomizableEdges = customizableEdges3;
+            btnGuardar.DisabledState.BorderColor = Color.DarkGray;
+            btnGuardar.DisabledState.CustomBorderColor = Color.DarkGray;
+            btnGuardar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
+            btnGuardar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
+            btnGuardar.FillColor = Color.Green;
+            btnGuardar.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnGuardar.ForeColor = Color.White;
+            btnGuardar.Location = new Point(371, 248);
+            btnGuardar.Name = "btnGuardar";
+            btnGuardar.ShadowDecoration.CustomizableEdges = customizableEdges4;
+            btnGuardar.Size = new Size(130, 82);
+            btnGuardar.TabIndex = 7;
+            btnGuardar.Text = "Guardar";
+            btnGuardar.Click += btnGuardar_Click;
             // 
-            // txtCodigo
+            // cmbCategoria
             // 
-            txtCodigo.BorderRadius = 20;
-            txtCodigo.CustomizableEdges = customizableEdges9;
-            txtCodigo.DefaultText = "";
-            txtCodigo.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
-            txtCodigo.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
-            txtCodigo.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
-            txtCodigo.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
-            txtCodigo.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtCodigo.Font = new Font("Segoe UI", 9F);
-            txtCodigo.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtCodigo.Location = new Point(22, 81);
-            txtCodigo.Name = "txtCodigo";
-            txtCodigo.PlaceholderText = "Ej.G0023";
-            txtCodigo.SelectedText = "";
-            txtCodigo.ShadowDecoration.CustomizableEdges = customizableEdges10;
-            txtCodigo.Size = new Size(199, 32);
-            txtCodigo.TabIndex = 1;
+            cmbCategoria.BackColor = Color.Transparent;
+            cmbCategoria.BorderRadius = 20;
+            cmbCategoria.CustomizableEdges = customizableEdges5;
+            cmbCategoria.DrawMode = DrawMode.OwnerDrawFixed;
+            cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbCategoria.FocusedColor = Color.FromArgb(94, 148, 255);
+            cmbCategoria.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            cmbCategoria.Font = new Font("Segoe UI", 10F);
+            cmbCategoria.ForeColor = Color.FromArgb(68, 88, 112);
+            cmbCategoria.ItemHeight = 30;
+            cmbCategoria.Items.AddRange(new object[] { "Fisico ", "Servicio" });
+            cmbCategoria.Location = new Point(295, 83);
+            cmbCategoria.Name = "cmbCategoria";
+            cmbCategoria.ShadowDecoration.CustomizableEdges = customizableEdges6;
+            cmbCategoria.Size = new Size(202, 36);
+            cmbCategoria.TabIndex = 6;
             // 
-            // guna2HtmlLabel2
+            // guna2HtmlLabel3
             // 
-            guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel2.Location = new Point(15, 140);
-            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(243, 18);
-            guna2HtmlLabel2.TabIndex = 2;
-            guna2HtmlLabel2.Text = "Ingresa El Nombre Del Producto/Servicio";
+            guna2HtmlLabel3.BackColor = Color.Transparent;
+            guna2HtmlLabel3.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            guna2HtmlLabel3.Location = new Point(292, 46);
+            guna2HtmlLabel3.Name = "guna2HtmlLabel3";
+            guna2HtmlLabel3.Size = new Size(146, 22);
+            guna2HtmlLabel3.TabIndex = 4;
+            guna2HtmlLabel3.Text = "Ingresa la Categoria:";
             // 
             // txtNombre
             // 
@@ -156,53 +167,49 @@
             txtNombre.Size = new Size(199, 32);
             txtNombre.TabIndex = 3;
             // 
-            // guna2HtmlLabel3
+            // guna2HtmlLabel2
             // 
-            guna2HtmlLabel3.BackColor = Color.Transparent;
-            guna2HtmlLabel3.Font = new Font("Comic Sans MS", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            guna2HtmlLabel3.Location = new Point(292, 46);
-            guna2HtmlLabel3.Name = "guna2HtmlLabel3";
-            guna2HtmlLabel3.Size = new Size(128, 18);
-            guna2HtmlLabel3.TabIndex = 4;
-            guna2HtmlLabel3.Text = "Ingresa la Categoria:";
+            guna2HtmlLabel2.BackColor = Color.Transparent;
+            guna2HtmlLabel2.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            guna2HtmlLabel2.Location = new Point(15, 140);
+            guna2HtmlLabel2.Name = "guna2HtmlLabel2";
+            guna2HtmlLabel2.Size = new Size(289, 22);
+            guna2HtmlLabel2.TabIndex = 2;
+            guna2HtmlLabel2.Text = "Ingresa El Nombre Del Producto/Servicio";
             // 
-            // cmbCategoria
+            // txtCodigo
             // 
-            cmbCategoria.BackColor = Color.Transparent;
-            cmbCategoria.BorderRadius = 20;
-            cmbCategoria.CustomizableEdges = customizableEdges5;
-            cmbCategoria.DrawMode = DrawMode.OwnerDrawFixed;
-            cmbCategoria.DropDownStyle = ComboBoxStyle.DropDownList;
-            cmbCategoria.FocusedColor = Color.FromArgb(94, 148, 255);
-            cmbCategoria.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
-            cmbCategoria.Font = new Font("Segoe UI", 10F);
-            cmbCategoria.ForeColor = Color.FromArgb(68, 88, 112);
-            cmbCategoria.ItemHeight = 30;
-            cmbCategoria.Items.AddRange(new object[] { "Fisico ", "Servicio" });
-            cmbCategoria.Location = new Point(295, 83);
-            cmbCategoria.Name = "cmbCategoria";
-            cmbCategoria.ShadowDecoration.CustomizableEdges = customizableEdges6;
-            cmbCategoria.Size = new Size(202, 36);
-            cmbCategoria.TabIndex = 6;
+            txtCodigo.BorderRadius = 20;
+            txtCodigo.CustomizableEdges = customizableEdges9;
+            txtCodigo.DefaultText = "";
+            txtCodigo.DisabledState.BorderColor = Color.FromArgb(208, 208, 208);
+            txtCodigo.DisabledState.FillColor = Color.FromArgb(226, 226, 226);
+            txtCodigo.DisabledState.ForeColor = Color.FromArgb(138, 138, 138);
+            txtCodigo.DisabledState.PlaceholderForeColor = Color.FromArgb(138, 138, 138);
+            txtCodigo.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtCodigo.Font = new Font("Segoe UI", 9F);
+            txtCodigo.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
+            txtCodigo.Location = new Point(22, 81);
+            txtCodigo.Name = "txtCodigo";
+            txtCodigo.PlaceholderText = "Ej.G0023";
+            txtCodigo.SelectedText = "";
+            txtCodigo.ShadowDecoration.CustomizableEdges = customizableEdges10;
+            txtCodigo.Size = new Size(199, 32);
+            txtCodigo.TabIndex = 1;
             // 
-            // btnGuardar
+            // guna2HtmlLabel1
             // 
-            btnGuardar.BorderRadius = 20;
-            btnGuardar.CustomizableEdges = customizableEdges3;
-            btnGuardar.DisabledState.BorderColor = Color.DarkGray;
-            btnGuardar.DisabledState.CustomBorderColor = Color.DarkGray;
-            btnGuardar.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
-            btnGuardar.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
-            btnGuardar.FillColor = Color.Green;
-            btnGuardar.Font = new Font("Comic Sans MS", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnGuardar.ForeColor = Color.White;
-            btnGuardar.Location = new Point(310, 206);
-            btnGuardar.Name = "btnGuardar";
-            btnGuardar.ShadowDecoration.CustomizableEdges = customizableEdges4;
-            btnGuardar.Size = new Size(191, 124);
-            btnGuardar.TabIndex = 7;
-            btnGuardar.Text = "Guardar";
-            btnGuardar.Click += btnGuardar_Click;
+            guna2HtmlLabel1.BackColor = Color.Transparent;
+            guna2HtmlLabel1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            guna2HtmlLabel1.Location = new Point(15, 46);
+            guna2HtmlLabel1.Name = "guna2HtmlLabel1";
+            guna2HtmlLabel1.Size = new Size(245, 22);
+            guna2HtmlLabel1.TabIndex = 0;
+            guna2HtmlLabel1.Text = "Ingresa El Id Del Producto/Servicio";
+            // 
+            // errorProvider1
+            // 
+            errorProvider1.ContainerControl = this;
             // 
             // FrmNuevoProducto
             // 
@@ -218,6 +225,7 @@
             guna2Panel1.PerformLayout();
             guna2Panel2.ResumeLayout(false);
             guna2Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)errorProvider1).EndInit();
             ResumeLayout(false);
         }
 
@@ -233,5 +241,6 @@
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private Guna.UI2.WinForms.Guna2Button btnGuardar;
         private Guna.UI2.WinForms.Guna2ComboBox cmbCategoria;
+        private ErrorProvider errorProvider1;
     }
 }

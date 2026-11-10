@@ -32,7 +32,7 @@ namespace DecoArte
                 dgvInventario.DataSource = dt;
 
                 // 3. Diagnóstico definitivo
-                
+
             }
             catch (Exception ex)
             {
@@ -152,6 +152,11 @@ namespace DecoArte
             {
                 MessageBox.Show("No hay datos en el inventario para exportar.", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+
+        }
+
+        private void dgvClientes_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

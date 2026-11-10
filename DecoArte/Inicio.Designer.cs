@@ -154,7 +154,7 @@
             pnlGlass.Controls.Add(btnSesion);
             pnlGlass.Controls.Add(txtContraseña);
             pnlGlass.CustomizableEdges = customizableEdges7;
-            pnlGlass.Location = new Point(367, 147);
+            pnlGlass.Location = new Point(413, 200);
             pnlGlass.Name = "pnlGlass";
             pnlGlass.ShadowDecoration.CustomizableEdges = customizableEdges8;
             pnlGlass.Size = new Size(440, 420);
@@ -167,7 +167,7 @@
             BackColor = Color.FromArgb(244, 246, 243);
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1164, 674);
+            ClientSize = new Size(1256, 780);
             Controls.Add(pnlGlass);
             FormBorderStyle = FormBorderStyle.FixedDialog;
             Name = "frm_inicio";

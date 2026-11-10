@@ -164,6 +164,7 @@
             txtTelefono.ShadowDecoration.CustomizableEdges = customizableEdges2;
             txtTelefono.Size = new Size(173, 33);
             txtTelefono.TabIndex = 26;
+            txtTelefono.KeyPress += ValidarSoloNumeros_KeyPress;
             // 
             // btnBorrar
             // 
@@ -690,7 +691,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(206, 212, 202);
-            ClientSize = new Size(1294, 794);
+            ClientSize = new Size(1357, 794);
             Controls.Add(guna2Panel1);
             Name = "Factura";
             Text = "Fcatura";

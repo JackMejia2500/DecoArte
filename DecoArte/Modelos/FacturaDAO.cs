@@ -12,6 +12,7 @@ namespace DecoArte.Modelos
     {
         public static string IdUsuario { get; set; }
         public static string NombreUsuario { get; set; }
+        public static string Permisos { get; set; } // <--- Agrega esta línea
     }
 
     // PILAR 1: ENCAPSULAMIENTO (Entidades de Factura y Detalle)

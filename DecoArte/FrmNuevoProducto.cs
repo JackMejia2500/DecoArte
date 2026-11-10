@@ -1,51 +1,79 @@
-﻿using DecoArte.conexion;
-using Microsoft.Data.SqlClient;
+﻿using DecoArte.Modelos;
 using System;
-using System.Collections.Generic;
-using System.Data;
+using System.Windows.Forms;
 
 namespace DecoArte
 {
     public partial class FrmNuevoProducto : Form
     {
+        private ProductoDAO dao = new ProductoDAO();
+
         public FrmNuevoProducto()
         {
             InitializeComponent();
+            this.Load += FrmNuevoProducto_Load;
+        }
+
+        private void FrmNuevoProducto_Load(object sender, EventArgs e)
+        {
+            txtCodigo.ReadOnly = true;
+
+            // Llenamos las categorías permitidas por la lógica de negocio (Compras)
+            cmbCategoria.Items.Clear();
+            cmbCategoria.Items.AddRange(new object[] { "Fisico", "Servicio" });
+            cmbCategoria.SelectedIndex = 0;
+
+            try
+            {
+                // Generar el ID al abrir la ventana
+                txtCodigo.Text = dao.GenerarIdProducto();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtCodigo.Text) || string.IsNullOrWhiteSpace(txtNombre.Text) || string.IsNullOrWhiteSpace(cmbCategoria.Text))
+            errorProvider1.Clear();
+            bool hayErrores = false;
+
+            if (string.IsNullOrWhiteSpace(txtNombre.Text))
             {
-                MessageBox.Show("Llena todos los campos.");
-                return;
+                errorProvider1.SetError(txtNombre, "El nombre del producto es obligatorio.");
+                hayErrores = true;
             }
+            if (string.IsNullOrWhiteSpace(cmbCategoria.Text))
+            {
+                errorProvider1.SetError(cmbCategoria, "Seleccione una categoría.");
+                hayErrores = true;
+            }
+
+            if (hayErrores) return;
 
             try
             {
-                Conexion db = new Conexion();
-                using (SqlConnection conn = db.ObtenerConexion())
+                ProductoEntidad nuevoProd = new ProductoEntidad
                 {
-                    // La consulta debe tener 4 columnas y 4 parámetros
-                    string query = "INSERT INTO Producto (IdProducto, Detalle_Producto, Categoria, Cantidad) VALUES (@Id, @Nom, @Cat, @Cant)";
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@Id", txtCodigo.Text);
-                        cmd.Parameters.AddWithValue("@Nom", txtNombre.Text);
-                        cmd.Parameters.AddWithValue("@Cat", cmbCategoria.Text);
-                        cmd.Parameters.AddWithValue("@Cant", 0); // El valor por defecto
+                    IdProducto = txtCodigo.Text,
+                    DetalleProducto = txtNombre.Text.Trim().ToUpper(), // Mayúsculas para estandarizar
+                    Categoria = cmbCategoria.Text,
+                    Cantidad = 0 // El valor inicial que tenías
+                };
 
-                        cmd.ExecuteNonQuery();
-                    }
+                if (dao.Guardar(nuevoProd))
+                {
+                    MessageBox.Show("Producto agregado al catálogo exitosamente.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    // DialogResult.OK le avisa al formulario de Compras que debe recargar el ComboBox
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
                 }
-
-                MessageBox.Show("Producto agregado al catálogo.");
-                this.DialogResult = DialogResult.OK;
-                this.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Error SQL: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error SQL", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

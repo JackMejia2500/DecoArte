@@ -2,14 +2,41 @@
 using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Text;
 
 namespace DecoArte.Modelos
 {
     public class ClienteDAO
     {
         private Conexion db = new Conexion();
+
+       
+        // --------------------------------------------------------
+        public string GenerarIdCliente()
+        {
+            string nuevoId = "C-0001"; // Formato exacto de 6 caracteres
+            SqlConnection conn = null;
+            try
+            {
+                conn = db.ObtenerConexion();
+                // Busca el máximo número, le quita el 'C-' (los primeros 2 caracteres) y extrae los 4 números
+                string query = "SELECT ISNULL(MAX(CAST(SUBSTRING(IdCliente, 3, 4) AS INT)), 0) + 1 FROM Clientes WHERE IdCliente LIKE 'C-%'";
+
+                using (SqlCommand cmd = new SqlCommand(query, conn))
+                {
+                    int siguiente = Convert.ToInt32(cmd.ExecuteScalar());
+                    nuevoId = "C-" + siguiente.ToString("D4"); // D4 lo formatea con 4 ceros: C-0001
+                }
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Error al generar ID de cliente: " + ex.Message);
+            }
+            finally
+            {
+                db.CerrarConexion(conn);
+            }
+            return nuevoId;
+        }
 
         public bool Guardar(Cliente cliente)
         {
@@ -36,7 +63,7 @@ namespace DecoArte.Modelos
             }
             finally
             {
-                db.CerrarConexion(conn); 
+                db.CerrarConexion(conn);
             }
             return exito;
         }
@@ -108,7 +135,6 @@ namespace DecoArte.Modelos
             return clientes;
         }
 
-
         public bool Eliminar(string idCliente)
         {
             bool exito = false;
@@ -134,6 +160,7 @@ namespace DecoArte.Modelos
             }
             return exito;
         }
+
         public List<Cliente> Buscar(string texto)
         {
             List<Cliente> lista = new List<Cliente>();
@@ -141,19 +168,16 @@ namespace DecoArte.Modelos
             try
             {
                 conn = db.ObtenerConexion();
-               
+
                 string query = "SELECT IdCliente, Nombre_Apellido, Telefono, Direccion FROM Clientes WHERE IdCliente LIKE @Texto OR Nombre_Apellido LIKE @Texto";
 
                 using (SqlCommand cmd = new SqlCommand(query, conn))
                 {
-                    
                     cmd.Parameters.AddWithValue("@Texto", "%" + texto + "%");
 
                     using (SqlDataReader reader = cmd.ExecuteReader())
                     {
-                        while (reader.Read()) // Lee cada fila del resultado el while es necesario para recorrer todas
-                                              // las filas del resultado de la consulta. Si no se utiliza,
-                                              // solo se leerá la primera fila y se perderán los demás resultados.
+                        while (reader.Read())
                         {
                             Cliente cliente = new Cliente
                             {
@@ -167,8 +191,7 @@ namespace DecoArte.Modelos
                     }
                 }
             }
-            catch (Exception ex) // el catch es necesario para capturar cualquier excepción que pueda ocurrir durante la ejecución del código dentro del bloque try.
-                                 // Si ocurre una excepción, el flujo de ejecución se transfiere al bloque catch, donde se puede manejar la excepción de manera
+            catch (Exception ex)
             {
                 throw new Exception("Error al buscar clientes: " + ex.Message);
             }
@@ -178,6 +201,5 @@ namespace DecoArte.Modelos
             }
             return lista;
         }
-
     }
 }

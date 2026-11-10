@@ -1,10 +1,6 @@
 ﻿using DecoArte.Modelos;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Text;
 using System.Windows.Forms;
 
 namespace DecoArte
@@ -14,7 +10,9 @@ namespace DecoArte
         public Clientes()
         {
             InitializeComponent();
-            CargarClientes(); // Cargar los clientes al iniciar el formulario
+            CargarClientes();
+            // Bloqueamos el ID para que el usuario no lo escriba a mano
+            txIdCliente.ReadOnly = true;
         }
 
         private void txtBucarCliente_TextChanged(object sender, EventArgs e)
@@ -22,13 +20,10 @@ namespace DecoArte
             try
             {
                 ClienteDAO dao = new ClienteDAO();
-                // Pasamos el texto actual del TextBox al método Buscar y actualizamos la tabla
                 dgvClientes.DataSource = dao.Buscar(txtBucarCliente.Text);
             }
             catch (Exception ex)
             {
-                // Usamos un MessageBox silencioso o lo dejamos en consola para no interrumpir 
-                // la escritura del usuario con ventanas emergentes en cada tecla si hay error de conexión
                 Console.WriteLine(ex.Message);
             }
         }
@@ -36,39 +31,45 @@ namespace DecoArte
         private void btnNuevoCliente_Click(object sender, EventArgs e)
         {
             LimpiarCampos();
+
+            // Lógica nueva: Generar el ID automáticamente al pedir un cliente nuevo
+            try
+            {
+                ClienteDAO dao = new ClienteDAO();
+                // Asegúrate de crear este método en ClienteDAO.cs (similar al de Factura)
+                txIdCliente.Text = dao.GenerarIdCliente();
+                txIdCliente.Tag = "NUEVO"; // Usamos Tag para saber que es un registro nuevo
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al generar ID: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnGuardarCliente_Click(object sender, EventArgs e)
         {
-
-            // Limpiamos alertas previas de los 4 controles
-
+            // Limpiamos alertas usando un solo ErrorProvider
             errorProvider1.Clear();
-            errorProvider2.Clear();
-            errorProvider3.Clear();
-            errorProvider4.Clear();
-
             bool hayErrores = false;
 
-            // Validaciones asignadas a cada ErrorProvider específico
             if (string.IsNullOrWhiteSpace(txIdCliente.Text))
             {
-                errorProvider1.SetError(txIdCliente, "El ID es obligatorio.");
+                errorProvider1.SetError(txIdCliente, "Presione 'NUEVO' para generar un ID.");
                 hayErrores = true;
             }
             if (string.IsNullOrWhiteSpace(txtNombrecliente.Text))
             {
-                errorProvider2.SetError(txtNombrecliente, "El nombre es obligatorio.");
+                errorProvider1.SetError(txtNombrecliente, "El nombre es obligatorio.");
                 hayErrores = true;
             }
             if (string.IsNullOrWhiteSpace(txtTelefonoCliente.Text))
             {
-                errorProvider3.SetError(txtTelefonoCliente, "El teléfono es obligatorio.");
+                errorProvider1.SetError(txtTelefonoCliente, "El teléfono es obligatorio.");
                 hayErrores = true;
             }
             if (string.IsNullOrWhiteSpace(txtDirreccion.Text))
             {
-                errorProvider4.SetError(txtDirreccion, "La dirección es obligatoria.");
+                errorProvider1.SetError(txtDirreccion, "La dirección es obligatoria.");
                 hayErrores = true;
             }
 
@@ -86,18 +87,16 @@ namespace DecoArte
 
                 ClienteDAO dao = new ClienteDAO();
 
-                // Evaluamos el estado de la caja de texto del ID
-                if (txIdCliente.Enabled)
+                // Evaluamos por medio de la propiedad Tag que seteamos arriba
+                if (txIdCliente.Tag != null && txIdCliente.Tag.ToString() == "NUEVO")
                 {
-                    // Si está habilitada, es un registro nuevo
-                    if (dao.Guardar(nuevoCliente))
+                    if (dao.Guardar(nuevoCliente)) // Usar el nombre exacto de tu método Insertar/Guardar
                     {
                         MessageBox.Show("Cliente guardado con éxito.", "Guardar", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
                 else
                 {
-                    // Si está bloqueada, es una edición
                     if (dao.Actualizar(nuevoCliente))
                     {
                         MessageBox.Show("Cliente actualizado con éxito.", "Actualizar", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -119,16 +118,17 @@ namespace DecoArte
             txtNombrecliente.Clear();
             txtTelefonoCliente.Clear();
             txtDirreccion.Clear();
-            txIdCliente.Enabled = true; // Habilitar el campo de ID para nuevos registros
+            txIdCliente.Tag = null; // Reseteamos el estado
         }
 
         private void btnEliminarCliente_Click(object sender, EventArgs e)
         {
-            if (txIdCliente.Enabled)
+            if (string.IsNullOrWhiteSpace(txIdCliente.Text) || (txIdCliente.Tag != null && txIdCliente.Tag.ToString() == "NUEVO"))
             {
-                MessageBox.Show("Seleccione un cliente para eliminar.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Seleccione un cliente de la tabla para eliminar.", "Eliminar", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+
             if (MessageBox.Show("¿Está seguro de que desea eliminar este cliente?", "Eliminar", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 try
@@ -149,13 +149,11 @@ namespace DecoArte
         }
 
         private void CargarClientes()
-
         {
             try
             {
                 ClienteDAO dao = new ClienteDAO();
-                List<Cliente> clientes = dao.Listar();
-                dgvClientes.DataSource = clientes;
+                dgvClientes.DataSource = dao.Listar();
             }
             catch (Exception ex)
             {
@@ -169,17 +167,29 @@ namespace DecoArte
             {
                 DataGridViewRow fila = dgvClientes.Rows[e.RowIndex];
                 txIdCliente.Text = fila.Cells["IdCliente"].Value.ToString();
-
-                // Corrección: NombreApellido en lugar de Nombre_Apellido
-                txtNombrecliente.Text = fila.Cells["NombreApellido"].Value.ToString();
-
+                txtNombrecliente.Text = fila.Cells["Nombre_Apellido"].Value.ToString(); // Ajusta si en el DGV dice NombreApellido
                 txtTelefonoCliente.Text = fila.Cells["Telefono"].Value.ToString();
                 txtDirreccion.Text = fila.Cells["Direccion"].Value.ToString();
 
-                txIdCliente.Enabled = false;
+                txIdCliente.Tag = "EDITAR"; // Cambiamos el estado a Edición
+            }
+        }
+        // Método para bloquear números (Para Nombres, Empresas, Roles)
+        private void ValidarSoloLetras_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; // Bloquea la tecla si no es letra, control (borrar) o espacio
+            }
+        }
+
+        // Método para bloquear letras (Para Teléfonos)
+        private void ValidarSoloNumeros_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Bloquea la tecla si no es un número o control (borrar)
             }
         }
     }
 }
-
-        

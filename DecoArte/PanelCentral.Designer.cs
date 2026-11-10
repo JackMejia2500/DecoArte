@@ -101,7 +101,7 @@
             btnFactura.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnFactura.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnFactura.FillColor = Color.FromArgb(79, 107, 97);
-            btnFactura.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            btnFactura.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             btnFactura.ForeColor = Color.White;
             btnFactura.HoverState.FillColor = Color.FromArgb(55, 78, 70);
             btnFactura.Location = new Point(17, 440);
@@ -122,7 +122,7 @@
             btnInventario.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnInventario.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnInventario.FillColor = Color.FromArgb(79, 107, 97);
-            btnInventario.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            btnInventario.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             btnInventario.ForeColor = Color.White;
             btnInventario.HoverState.FillColor = Color.FromArgb(55, 78, 70);
             btnInventario.Location = new Point(17, 375);
@@ -143,7 +143,7 @@
             btnUsuarios.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnUsuarios.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnUsuarios.FillColor = Color.FromArgb(79, 107, 97);
-            btnUsuarios.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            btnUsuarios.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             btnUsuarios.ForeColor = Color.White;
             btnUsuarios.HoverState.FillColor = Color.FromArgb(55, 78, 70);
             btnUsuarios.Location = new Point(17, 309);
@@ -164,7 +164,7 @@
             btnCompraServicios.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnCompraServicios.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnCompraServicios.FillColor = Color.FromArgb(79, 107, 97);
-            btnCompraServicios.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            btnCompraServicios.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             btnCompraServicios.ForeColor = Color.White;
             btnCompraServicios.HoverState.FillColor = Color.FromArgb(55, 78, 70);
             btnCompraServicios.Location = new Point(17, 255);
@@ -185,7 +185,7 @@
             btnProveedores.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnProveedores.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnProveedores.FillColor = Color.FromArgb(79, 107, 97);
-            btnProveedores.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            btnProveedores.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             btnProveedores.ForeColor = Color.White;
             btnProveedores.HoverState.FillColor = Color.FromArgb(55, 78, 70);
             btnProveedores.Location = new Point(17, 191);
@@ -206,7 +206,7 @@
             btnReservaciones.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnReservaciones.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnReservaciones.FillColor = Color.FromArgb(79, 107, 97);
-            btnReservaciones.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            btnReservaciones.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             btnReservaciones.ForeColor = Color.White;
             btnReservaciones.HoverState.FillColor = Color.FromArgb(55, 78, 70);
             btnReservaciones.Location = new Point(17, 127);
@@ -222,11 +222,11 @@
             guna2HtmlLabel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             guna2HtmlLabel1.AutoSize = false;
             guna2HtmlLabel1.BackColor = Color.Transparent;
-            guna2HtmlLabel1.Font = new Font("Comic Sans MS", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel1.Font = new Font("Georgia", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel1.ForeColor = Color.FromArgb(35, 45, 42);
             guna2HtmlLabel1.Location = new Point(59, 3);
             guna2HtmlLabel1.Name = "guna2HtmlLabel1";
-            guna2HtmlLabel1.Size = new Size(87, 47);
+            guna2HtmlLabel1.Size = new Size(100, 47);
             guna2HtmlLabel1.TabIndex = 1;
             guna2HtmlLabel1.Text = "Opciones";
             // 
@@ -240,7 +240,7 @@
             btnClientes.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnClientes.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnClientes.FillColor = Color.FromArgb(79, 107, 97);
-            btnClientes.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            btnClientes.Font = new Font("Segoe UI", 9.75F, FontStyle.Bold);
             btnClientes.ForeColor = Color.White;
             btnClientes.HoverState.FillColor = Color.FromArgb(55, 78, 70);
             btnClientes.Location = new Point(17, 63);
@@ -262,7 +262,7 @@
             btnSalir.DisabledState.FillColor = Color.FromArgb(169, 169, 169);
             btnSalir.DisabledState.ForeColor = Color.FromArgb(141, 141, 141);
             btnSalir.FillColor = Color.FromArgb(168, 74, 74);
-            btnSalir.Font = new Font("Comic Sans MS", 9.75F, FontStyle.Bold);
+            btnSalir.Font = new Font("Georgia", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnSalir.ForeColor = Color.White;
             btnSalir.HoverState.FillColor = Color.Red;
             btnSalir.Location = new Point(29, 693);
@@ -310,11 +310,11 @@
             // guna2HtmlLabel2
             // 
             guna2HtmlLabel2.BackColor = Color.Transparent;
-            guna2HtmlLabel2.Font = new Font("Comic Sans MS", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            guna2HtmlLabel2.Font = new Font("Georgia", 27.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             guna2HtmlLabel2.ForeColor = Color.White;
             guna2HtmlLabel2.Location = new Point(550, 12);
             guna2HtmlLabel2.Name = "guna2HtmlLabel2";
-            guna2HtmlLabel2.Size = new Size(172, 53);
+            guna2HtmlLabel2.Size = new Size(182, 45);
             guna2HtmlLabel2.TabIndex = 0;
             guna2HtmlLabel2.Text = "DecoArte";
             // 

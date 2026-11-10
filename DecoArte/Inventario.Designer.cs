@@ -124,7 +124,7 @@
             txtBuscarProducto.FocusedState.BorderColor = Color.FromArgb(94, 148, 255);
             txtBuscarProducto.Font = new Font("Segoe UI", 9F);
             txtBuscarProducto.HoverState.BorderColor = Color.FromArgb(94, 148, 255);
-            txtBuscarProducto.Location = new Point(673, 110);
+            txtBuscarProducto.Location = new Point(896, 110);
             txtBuscarProducto.Name = "txtBuscarProducto";
             txtBuscarProducto.PlaceholderText = "🔎 Buscar Producto:";
             txtBuscarProducto.SelectedText = "";
@@ -222,7 +222,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(206, 212, 202);
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1006, 757);
+            ClientSize = new Size(1229, 757);
             Controls.Add(guna2GradientPanel1);
             Controls.Add(label1);
             Controls.Add(btnExportarExcel);
