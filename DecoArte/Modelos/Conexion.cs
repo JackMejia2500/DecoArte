@@ -6,13 +6,14 @@ namespace DecoArte.conexion
 {
     public class Conexion
     {
-       
-        private readonly string CadenaConexion = "Data Source=localhost;" +
-            "Initial Catalog=DecoArte;" +
-            "Integrated Security=True;" +
-            "TrustServerCertificate=True;";
 
-        
+        private readonly string CadenaConexion = "Data Source=192.168.100.2,1433;" +
+    "Initial Catalog=DecoArte;" +
+    "User ID=AdminDeco;" +
+    "Password=Admin123;" +
+    "TrustServerCertificate=True;";
+
+
         public SqlConnection ObtenerConexion()
         {
             SqlConnection conexion = new SqlConnection(CadenaConexion);
